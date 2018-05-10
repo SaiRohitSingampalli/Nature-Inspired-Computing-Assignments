@@ -1,0 +1,55 @@
+[System]
+Name='R4'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=13
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='road_condition'
+Range=[0 100]
+NumMFs=4
+MF1='very_good':'trapmf',[-30.5 -3.86 11 22.4]
+MF2='good':'trapmf',[3.33 31.8783068783069 32.7 63.3]
+MF3='bad':'trapmf',[36.7 68.3862433862434 70 96.7]
+MF4='very_bad':'trapmf',[79.2328042328042 86.1 101 125]
+
+[Input2]
+Name='distance'
+Range=[0 50]
+NumMFs=4
+MF1='very_near':'trapmf',[-11.4 -1.27 3.82 6.67989417989418]
+MF2='near':'trapmf',[1.667 15 18.34 31.66]
+MF3='far':'trapmf',[18.34 31.66 35 48.33]
+MF4='very_far':'trapmf',[35.1 48.5 51.8 65.1]
+
+[Output1]
+Name='velocity'
+Range=[0 180]
+NumMFs=5
+MF1='very_slow':'trapmf',[-40.5 -4.5 4.5 11.19]
+MF2='slow':'trapmf',[4.5 40.5 49.5 85.5]
+MF3='medium':'trapmf',[49.5 85.5 94.5 130.5]
+MF4='fast':'trapmf',[94.5 130.5 139.5 175.5]
+MF5='very_fast':'trapmf',[139.5 175.5 184.5 220.5]
+
+[Rules]
+0 1, 1 (1) : 1
+2 2, 2 (1) : 1
+1 2, 2 (1) : 1
+4 2, 1 (1) : 1
+3 2, 1 (1) : 1
+1 3, 4 (1) : 1
+2 3, 4 (1) : 1
+3 3, 3 (1) : 1
+4 3, 2 (1) : 1
+1 4, 5 (1) : 1
+2 4, 5 (1) : 1
+3 4, 4 (1) : 1
+4 4, 2 (1) : 1
